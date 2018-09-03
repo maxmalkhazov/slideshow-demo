@@ -1,0 +1,153 @@
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+.container {
+	background: #f6f6f6;
+	display: grid;
+	grid-gap: 1.25rem;
+	grid-template-rows: 35vh 60vh 5vh;
+	grid-template-columns: 1fr 2fr 1fr;
+	
+	grid-template-areas: "slide slide slide"
+	                     "section-left carousel section-right"
+	                     "footer footer footer";
+}
+
+
+.slide {
+	grid-area: slide;
+	overflow: hidden;
+	position: relative;
+}
+
+.headline {
+	font-family: 'Acme';
+	text-transform: uppercase;
+	font-size: 3.35rem;
+	color: #fff;
+	font-weight: 300;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -70%);
+	z-index: 100;
+}
+
+.slide__background {
+	background: url('./img/slide.jpg') repeat-x;
+	background-size: cover;
+	background-position-y: 65%;
+	height: 100%;
+	width: 3000px;
+	animation: slider 40s linear infinite;
+}
+
+@keyframes slider {
+	0% {
+		transform: translate3d(0, 0, 0);
+	}
+	
+	100% {
+		transform: translate3d(-1500px, 0, 0);
+	}
+}
+
+.section-left {
+	grid-area: section-left;
+	background: purple;
+	margin-left: 1rem;
+	box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, .6);
+}
+
+.section-right {
+	grid-area: section-right;
+	margin-right: 1rem;
+	
+	display: grid;
+	grid-gap: .8rem;
+	grid-template-rows: 1fr 1fr;
+	grid-template-columns: 1;
+	
+	grid-template-areas:  "upper-top"
+	                      "upper-bottom"
+}
+
+.section-right__upper {
+	grid-area: upper-top;
+	background: coral;
+	box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, .4);
+}
+
+.section-right__lower {
+	grid-area: upper-bottom;
+	background: coral;
+	box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, .4);
+}
+
+.carousel {
+	grid-area: carousel;
+	box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, .6);
+}
+
+.carousel__content {
+	position: relative;
+	height: 100%;
+	width: 50vw;
+	overflow: hidden;
+}
+
+.inner {
+	display: flex;
+	position: absolute;
+	left: -50vw;
+	transition: left .5s linear;
+}
+
+.img {
+	height: 100%;
+	width: 50vw;
+}
+
+.prev, .next {
+	color: #fff;
+	position: absolute;
+	border-style: solid;
+	top: 50%;
+	opacity: .7;
+	transition: all .5 ease-in;
+}
+
+.prev:hover, .next:hover {
+	opacity: .8;
+}
+
+.prev:active, .next:active {
+	opacity: 1;
+}
+
+.prev {
+	border-width: 1.5rem 3rem 1.5rem 0;
+	border-color: transparent #fff transparent transparent;
+	transform: translateY(-50%);
+	left: 0;
+	margin-left: 1rem;
+}
+
+.next {
+	border-width: 1.5rem 0 1.5rem 3rem;
+	border-color: transparent transparent transparent #fff;
+	right: 0;
+	margin-right: 1rem;
+	transform: translateY(-50%);
+}
+
+.footer {
+	grid-area: footer;
+}
+
+
